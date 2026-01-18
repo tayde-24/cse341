@@ -1,0 +1,24 @@
+{
+	"contact": {
+		"firstName": "Octavio",
+		"lastName": "Carmona",
+		"email": "octaviocarmona84@test.com",
+		"favoriteColor": "Black",
+		"birthday": "02/28/84"
+		},
+	"contact2": {
+		"firstName": "Heather",
+		"lastName": "Giles",
+		"email": "heathergiles12@test.com",
+		"favoriteColor": "Blue",
+		"birthday": "10/26/95"
+		},
+	"contact3": {
+		"firstName": "Eber",
+		"lastName": "Sanchez",
+		"email": "ebersanchez94@test.test",
+		"favoriteColor": "Grey",
+		"birthday": "05/19/94"
+		}
+
+}
