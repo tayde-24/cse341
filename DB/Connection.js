@@ -34,7 +34,7 @@ module.exports = {
 };
 /* --Lesson1---
 const mongoose = require('mongoose');
-//const URI = 'mongodb+srv://taydeluevano_db_user:7MUTpQMrDfSrrFfV@cluster0.ad5kkej.mongodb.net/';
+
 const URI = process.env.MONGO_URI;
 const connectDB = async () => {
     await mongoose.connect(URI);
