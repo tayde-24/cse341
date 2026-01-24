@@ -1,6 +1,15 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+
 router.use('/contacts', require('./contacts'));
+
 module.exports = router;
+
+
+// const router = require('express').Router();
+// router.use('/contacts', require('./contacts'));
+// module.exports = router;
+
 /*Lesson1
 const routes = require('express').Router();
 const lesson1Controller = require('../controllers/lesson1');

@@ -1,11 +1,16 @@
-const contacts = require('express').Router();
-const lesson2Controller = require('../controllers/contacts');
+const express = require('express');
+const router = express.Router();
+// const contacts = require('express').Router();
+const lesson2Controller = require('../controllers/contacts.js');
 
 //To get all contacts
-contacts.get('/', lesson2Controller.allContacts);
+router.get('/', lesson2Controller.allContacts);
+// contacts.get('/', lesson2Controller.allContacts);
 
 //To get single contact
-contacts.get('/:id', lesson2Controller.singleContact);
+router.get('/:id', lesson2Controller.singleContact);
+module.exports = router;
+// contacts.get('/:id', lesson2Controller.singleContact);
 
 // routes.get('/', lesson2Controller.octavioCarmona);
 // routes.get('/', lesson2Controller.heatherGiles);
@@ -26,4 +31,5 @@ contacts.get('/:_id', (req, res) => {
     res.send(contact);
 });
 */
-module.exports = contacts;
+
+// module.exports = contacts;

@@ -1,7 +1,7 @@
 {
   "name": "cse341",
   "version": "1.0.0",
-  "description": "MongoDB app with .env file and static folders",
+  "description": "��#\u0000 \u0000c\u0000s\u0000e\u00003\u00004\u00001\u0000\r\u0000 \u0000",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,11 +13,21 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "2.2.2",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "mongoose": "^9.1.3"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tayde-24/cse341.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tayde-24/cse341/issues"
+  },
+  "homepage": "https://github.com/tayde-24/cse341#readme"
 }
