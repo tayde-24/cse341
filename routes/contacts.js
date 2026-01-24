@@ -9,7 +9,7 @@ router.get('/', lesson2Controller.allContacts);
 
 //To get single contact
 router.get('/:id', lesson2Controller.singleContact);
-module.exports = router;
+module.exports = router; 
 // contacts.get('/:id', lesson2Controller.singleContact);
 
 // routes.get('/', lesson2Controller.octavioCarmona);

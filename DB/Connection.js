@@ -32,7 +32,7 @@ module.exports = {
     initDb,
     getDb
 };
-/* --Lesson1---
+/* --Lesson1----
 const mongoose = require('mongoose');
 
 const URI = process.env.MONGO_URI;

@@ -39,18 +39,6 @@ app.get('/api/contacts', (req,res) => {
     res.send([1, 2, 3]);
 } );
 
-
-app.get('/api/contacts', (req, res) => {
-    res.send(contacts);
-})
-
-app.get('/api/contacts/:id', (req, res) => {
-    // res.send(req.params);
-    const contact = contacts.find(c => c.id === parseInt(req.params.id));
-    if(!contact) res.status(404).send('The contact with the given ID was not found');
-    res.send(contact);
-});
-
 app.use('/', require('./routes/contacts'));*/
 
 /*--Lesson 1---

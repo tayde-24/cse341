@@ -9,7 +9,6 @@ const allContacts = async(req, res, next) => {
     //Puts DB info as an array
     result.toArray().then((lists)=> {
         res.setHeader('Content-Type', 'application/json');
-        //Converts it to JSON(?)
         res.status(200).json(lists);
     });
 };
