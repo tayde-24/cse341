@@ -10,3 +10,17 @@ GET http://localhost:3000/contacts/696ad5001268689c6f8be538
 ###
 GET http://localhost:3000/contacts/696ad51c1268689c6f8be539
 
+###
+GET https://tayde-luevano-cse341.onrender.com/contacts
+
+###
+GET https://tayde-luevano-cse341.onrender.com/contacts/696ad43a1268689c6f8be537
+
+###
+GET https://tayde-luevano-cse341.onrender.com/contacts/696ad5001268689c6f8be538
+
+###
+GET https://tayde-luevano-cse341.onrender.com/contacts/696ad51c1268689c6f8be539
+
+
+
