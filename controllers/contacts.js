@@ -110,7 +110,7 @@ const deleteContact = async(req, res, next) => {
         // if(err) throw err
     console.log(result);
         if (result.deletedCount > 0) {
-            res.status(204).send();
+            res.status(200).send();
         } else {
             res.status(500).json(result.error || 'Some error occured while deleting the contact.');
         }

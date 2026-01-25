@@ -36,14 +36,14 @@ content-type: application/json
 }
 
 ### Deletes a specific contact from database
-DELETE http://localhost:3000/contacts/696ad43a1268689c6f8be537 HTTP/1.1
+DELETE http://localhost:3000/contacts/6975a5bb7a1c7f139701d65c HTTP/1.1
 
 # ------------------------------------RENDER LINKS-----------------------------------------------
 ### Gets all from the contacts list
 GET https://tayde-luevano-cse341.onrender.com/contacts
 
-# ###
-# GET https://tayde-luevano-cse341.onrender.com/contacts/696ad43a1268689c6f8be537
+###
+GET https://tayde-luevano-cse341.onrender.com/contacts/696ad51c1268689c6f8be539
 
 # ###
 # GET https://tayde-luevano-cse341.onrender.com/contacts/696ad5001268689c6f8be538
