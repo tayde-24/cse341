@@ -21,3 +21,48 @@
 		"birthday": "05/19/94"
 		}
 }
+
+TypeError: newContact is not a constructor
+const newContact = async(req, res, next) => {
+    const postContact = mongoose.Schema({
+        firstName: {
+            type: String,
+            required: true
+        },
+		lastName: {
+            type: String,
+            required: true
+        },
+		email: {
+            type: String,
+            required: true
+        },
+		favoriteColor: {
+            type: String,
+            required: true
+        },
+		birthday: {
+            type: String,
+            required: true
+        }
+    });
+}
+
+const createNewContact = async(req, res) => {
+    const newPostContact = new newContact({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        favoriteColor: req.body.favoriteColor,
+        birthday: req.body.birthday
+    });
+	
+
+    newPostContact.save()
+    .then(data => {
+        res.json(data);
+    })
+    .catch(err => {
+        res.json({message: err});
+    })
+}
