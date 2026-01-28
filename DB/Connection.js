@@ -32,22 +32,6 @@ module.exports = {
     initDb,
     getDb
 };
-/* --Lesson1----
-const mongoose = require('mongoose');
-
-const URI = process.env.MONGO_URI;
-const connectDB = async () => {
-    await mongoose.connect(URI);
-    // await mongoose.connect(URI);
-    
-//     await mongoose.connect(URI, {
-//         useUnifiedTopology: true,
-//     useNewUrlParser: true
-// });
-    console.log('db connected...')
-};
-
-module.exports = connectDB;*/
 
 
 

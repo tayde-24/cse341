@@ -17,28 +17,3 @@ router.post('/', lesson2Controller.createNewContact);
 router.put('/:id', lesson2Controller.updateContact);
 
 router.delete('/:id', lesson2Controller.deleteContact);
-
-
-
-// contacts.get('/:id', lesson2Controller.singleContact);
-// routes.get('/', lesson2Controller.octavioCarmona);
-// routes.get('/', lesson2Controller.heatherGiles);
-// routes.get('/', lesson2Controller.eberSanchez);
-
-/*---What I tried---
-
-//All contacts
-contacts.get('/', (req, res) => {
-     --What I tried---
-    res.send(lesson2Controller);   
-});
-
-//All contacts
-contacts.get('/:_id', (req, res) => {
-    const contact = lesson2Controller.find(c => c.lesson2Controller.contactRoute === parseInt(req.params.lesson2Controller.contactRoute));
-    if(!contact) res.status(404).send('The contact with the given ID was not found');
-    res.send(contact);
-});
-*/
-
-// module.exports = contacts;
