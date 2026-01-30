@@ -3,7 +3,7 @@
 GET http://localhost:3000/contacts
 
 ### Gets one contact from contacts list
-GET http://localhost:3000/contacts/696ad51c1268689c6f8be539
+GET http://localhost:3000/contacts/697d369fb0e168184577a32e
 
 ### Posts in a new contact in contacts database
 POST http://localhost:3000/contacts HTTP/1.1
@@ -14,30 +14,39 @@ content-type: application/json
 	"lastName": "Luevano",
 	"email": "katyluevano98@test.com",
 	"favoriteColor": "Green",
-	"birthday": "10/30/98"
+	"birthday": "10/30/98",
+	"favoriteBook": "Coraline",
+	"favoriteNumber": "28",
+	"favoriteApostle" : "D. Todd Christofferson",
+	"schoolMajor": "Criminology"
+
 }
 
 ### Updates a specific contact from contacts database
-PUT http://localhost:3000/contacts/696ad51c1268689c6f8be539 HTTP/1.1
+PUT http://localhost:3000/contacts/697d36e7b0e168184577a332 HTTP/1.1
 content-type: application/json
 
 {
     "firstName": "Eber",
-	"lastName": "Sanchez",
-	"email": "eseSanchez94@test.com",
-	"favoriteColor": "Grey purple",
-	"birthday": "05/14/95"
+    "lastName": "Sanchez",
+    "email": "ebersanchez94@test.test",
+    "favoriteColor": "Grey",
+    "birthday": "05/19/94",
+    "favoriteBook": "Alice in Wonderland",
+    "favoriteNumber": "94",
+    "favoriteApostle": "Dallin H. Oaks",
+    "schoolMajor": "English"
 }
 
 ### Deletes a specific contact from database
-DELETE http://localhost:3000/contacts/6975a5bb7a1c7f139701d65c HTTP/1.1
+DELETE http://localhost:3000/contacts/697d39d539bdc2caa7482918 HTTP/1.1
 
 # ------------------------------------RENDER LINKS-----------------------------------------------
 ### Gets all from the contacts list
 GET https://tayde-luevano-cse341.onrender.com/contacts
 
 ###
-GET https://tayde-luevano-cse341.onrender.com/contacts/696ad51c1268689c6f8be539
+GET https://tayde-luevano-cse341.onrender.com/contacts/697d36c4b0e168184577a330
 
 
 ### Posts in a new contact in contacts database
@@ -49,11 +58,15 @@ content-type: application/json
 	"lastName": "Jalati",
 	"email": "jackyjalati@test.com",
 	"favoriteColor": "Blue",
-	"birthday": "02/11/96"
+	"birthday": "02/11/96",
+	"favoriteBook": "Harry Potter and the Sorcerer's Stone",
+	"favoriteNumber": "22",
+	"favoriteApostle" : "Henry B. Eyring",
+	"schoolMajor": "Astronomy"
 }
 
 ###
-PUT https://tayde-luevano-cse341.onrender.com/contacts/696ad51c1268689c6f8be539 HTTP/1.1
+PUT https://tayde-luevano-cse341.onrender.com/contacts/697d36e7b0e168184577a332 HTTP/1.1
 content-type: application/json
 
 {
@@ -61,11 +74,15 @@ content-type: application/json
 	"lastName": "Sanchez",
 	"email": "esanchez32@test.com",
 	"favoriteColor": "Purple",
-	"birthday": "05/20/95"
+	"birthday": "05/20/95",
+	"favoriteBook": "Memento Mori",
+	"favoriteNumber": "32",
+	"favoriteApostle" : "Russell M. Nelson",
+	"schoolMajor": "Engineer"
 }
 
 ###
-DELETE https://tayde-luevano-cse341.onrender.com/contacts/696ad5001268689c6f8be538 HTTP/1.1
+DELETE https://tayde-luevano-cse341.onrender.com/contacts/697d36c4b0e168184577a330 HTTP/1.1
 
 
 

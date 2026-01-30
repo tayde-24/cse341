@@ -4,65 +4,32 @@
 		"lastName": "Carmona",
 		"email": "octaviocarmona84@test.com",
 		"favoriteColor": "Black",
-		"birthday": "02/28/84"
+		"birthday": "02/28/84",
+        "favoriteBook": "Fahrenheit 451",
+	    "favoriteNumber": "8",
+	    "favoriteApostle" : "Jeffrey R. Holland",
+	    "schoolMajor": "Astronomy"
 		},
 	"contact2": {
 		"firstName": "Heather",
 		"lastName": "Giles",
 		"email": "heathergiles12@test.com",
 		"favoriteColor": "Blue",
-		"birthday": "10/26/95"
+		"birthday": "10/26/95",
+        "favoriteBook": "Lord of the Rings: The Fellowship of the Ring",
+	    "favoriteNumber": "9",
+	    "favoriteApostle" : "Patrick Kearon",
+	    "schoolMajor": "Library Science"
 		},
 	"contact3": {
 		"firstName": "Eber",
 		"lastName": "Sanchez",
 		"email": "ebersanchez94@test.test",
 		"favoriteColor": "Grey",
-		"birthday": "05/19/94"
+		"birthday": "05/19/94",
+        "favoriteBook": "Alice in Wonderland",
+	    "favoriteNumber": "10",
+	    "favoriteApostle" : "Jeffrey R. Holland",
+	    "schoolMajor": "Gastronomy"
 		}
-}
-
-TypeError: newContact is not a constructor
-const newContact = async(req, res, next) => {
-    const postContact = mongoose.Schema({
-        firstName: {
-            type: String,
-            required: true
-        },
-		lastName: {
-            type: String,
-            required: true
-        },
-		email: {
-            type: String,
-            required: true
-        },
-		favoriteColor: {
-            type: String,
-            required: true
-        },
-		birthday: {
-            type: String,
-            required: true
-        }
-    });
-}
-
-const createNewContact = async(req, res) => {
-    const newPostContact = new newContact({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
-    });
-	
-
-    newPostContact.save()
-    .then(data => {
-        res.json(data);
-    })
-    .catch(err => {
-        res.json({message: err});
-    })
 }

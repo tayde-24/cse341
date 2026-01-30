@@ -36,7 +36,11 @@ const createNewContact = async(req, res, next) => {
         lastName: req.body.lastName,
         email: req.body.email,
         favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        birthday: req.body.birthday,
+        favoriteBook: req.body.favoriteBook,
+        favoriteNumber: req.body.favoriteNumber,
+        favoriteApostle: req.body.favoriteApostle,
+        schoolMajor: req.body.schoolMajor
     };
 
     const result = await mongodb.getDb().collection('contacts').insertOne(newPostContact);
@@ -55,7 +59,11 @@ const updateContact = async(req, res, next) => {
         lastName: req.body.lastName,
         email: req.body.email,
         favoriteColor: req.body.favoriteColor,
-        birthday: req.body.birthday
+        birthday: req.body.birthday,
+        favoriteBook: req.body.favoriteBook,
+        favoriteNumber: req.body.favoriteNumber,
+        favoriteApostle: req.body.favoriteApostle,
+        schoolMajor: req.body.schoolMajor
     };
     const result = await mongodb.getDb().collection('contacts').replaceOne({_id: userId}, updateContact);
     console.log(result);
