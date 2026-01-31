@@ -19,6 +19,11 @@ app
         next();
     })
     .use(cors())
+    .use(cors({
+        origin: "https://tayde-luevano-cse341.onrender.com",
+        headers: ["Content-Type"],
+        credentials: true,
+    }))
     .use(express.json())
     .use('/', require('./routes'));
 
