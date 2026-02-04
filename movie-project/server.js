@@ -20,7 +20,7 @@ app
     })
     .use(cors())
     .use(cors({
-        origin: "https://tayde-luevano-cse341.onrender.com",
+        origin: "https://cse341-movies-project.onrender.com",
         headers: ["Content-Type"],
         credentials: true,
     }))

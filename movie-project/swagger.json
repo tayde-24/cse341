@@ -11,19 +11,9 @@
     "http"
   ],
   "paths": {
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/users/": {
       "get": {
-        "description": "Brings back all of the users from MongoDB",
+        "description": "Gets all the users from MongoDB.",
         "produces": [
           "application/json"
         ],
@@ -71,11 +61,19 @@
         }
       }
     },
-    "/users/id": {
+    "/users/{id}": {
       "get": {
-        "description": "Returns a specific user.",
+        "description": "Gets a specific user from MongoDB",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -87,8 +85,14 @@
         }
       },
       "put": {
-        "description": "Updates user's information",
+        "description": "Updates a specific user's information",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
@@ -124,7 +128,15 @@
         }
       },
       "delete": {
-        "description": "Deletes user information.",
+        "description": "Deletes a specific user from MongoDB",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -137,7 +149,7 @@
     },
     "/movies/": {
       "get": {
-        "description": "Brings back all of the movies from MongoDB",
+        "description": "Gets all the movies from MongoDB.",
         "produces": [
           "application/json"
         ],
@@ -148,7 +160,7 @@
         }
       },
       "post": {
-        "description": "Creates a new movie with movie review.",
+        "description": "Creates a new movie.",
         "parameters": [
           {
             "name": "body",
@@ -191,11 +203,19 @@
         }
       }
     },
-    "/movies/id": {
+    "/movies/{id}": {
       "get": {
-        "description": "It brings back a specific movie with user's movie review",
+        "description": "Gets a specific movie from MongoDB",
         "produces": [
           "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
         ],
         "responses": {
           "200": {
@@ -207,8 +227,14 @@
         }
       },
       "put": {
-        "description": "Updates movie and movie review.",
+        "description": "Updates a specific movie's information or movie review.",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
@@ -250,7 +276,15 @@
         }
       },
       "delete": {
-        "description": "Deletes movie and user's movie review",
+        "description": "Deletes a specific movie from MongoDB",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
