@@ -39,7 +39,7 @@ content-type: application/json
 }
 
 ### Deletes a specific contact from database
-DELETE http://localhost:3000/contacts/697d39d539bdc2caa7482918 HTTP/1.1
+DELETE http://localhost:3000/contacts/697d412850c540d1c0d9ebb7 HTTP/1.1
 
 # ------------------------------------RENDER LINKS-----------------------------------------------
 ### Gets all from the contacts list

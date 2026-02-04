@@ -1,0 +1,32 @@
+{
+    "movie1":
+    {
+        "title": "Toy Story",
+        "releaseYear" : "1995",
+        "rating" : "G",
+        "length" : "81 m",
+        "originalLanguage" : "English",
+        "description" : "Toy Story is about a group of toys that secretly come to life when humans aren't around. The story follows Woody, a loyal cowboy doll, whose place as favorite toy is threatened when a flashy space ranger named Buzz Lightyear arrives. Through rivalry, jealousy, and a bunch of misadventures, they end up learning how to work together and what friendship really means.",
+        "usersMovieReview": "This movie is awesome! The technology was ahead of its time and the story is inspiring!"
+    },
+    "movie2":
+    {
+        "title": "Lord of the Rings: The Fellowship of the Ring",
+        "releaseYear" : "2001",
+        "rating" : "PG-13",
+        "length" : "178 m",
+        "originalLanguage" : "English",
+        "description" : "The Lord of the Rings: The Fellowship of the Ring follows a young hobbit, Frodo Baggins, who inherits a powerful ring that must be destroyed to stop the dark lord Sauron. Frodo sets out on a dangerous journey with a small group of allies—the Fellowship—to take the Ring to Mount Doom, facing enemies, temptation, and growing darkness along the way.",
+        "usersMovieReview": "I have no words. The story was exciting! This film is in a whole the greatest art created!"
+    },
+    "movie3":
+    {
+        "title": "RRR",
+        "releaseYear" : "2022",
+        "rating" : "TV-MA",
+        "length" : "187 m",
+        "originalLanguage" : "Telugu",
+        "description" : "RRR is an epic action drama set in 1920s colonial India that follows two legendary revolutionaries, Alluri Sitarama Raju and Komaram Bheem, whose friendship is tested as they fight British oppression, personal duty, and brutal injustice—blending over-the-top action, emotion, music, and mythic heroism.",
+        "usersMovieReview": "This was quite a movie. I was not expecting them to burst out in musicals in an action heavy movie, but it just made it quite enjoyable! The action was exciting! Loved the story!"
+    }
+}

@@ -1,0 +1,151 @@
+# ---------------------------LOCALHOST LINKS------------------------------------------------------
+
+#------For Users--------------------
+### Gets all users from MongoDB
+GET http://localhost:5000/users
+
+### Gets one user from MongoDB
+GET http://localhost:5000/users/69839e533511f3cb26cb7109
+
+### Posts in a new user in MongoDB database
+POST http://localhost:5000/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Katy",
+	"lastName": "Luevano",
+	"birthday": "10/30/98",
+    "email": "katyluevano98@test.com",
+	"password": "CoralineRock$$"
+}
+
+### Updates a specific user from MongoDB database
+PUT http://localhost:5000/users/69839e8b3511f3cb26cb710f HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Eber",
+    "lastName": "Sanchez",
+    "birthday": "05/19/94",
+    "email": "ebersanchez94@test.test",
+    "password": "GreyRule$All"
+}
+
+### Deletes a specific user from database
+DELETE http://localhost:5000/users/ HTTP/1.1
+#---------------------------------------------
+
+#----------For Movies---------------------------------
+
+### Gets all movies from MongoDB
+GET http://localhost:5000/movies
+
+### Gets one movie from MongoDB
+GET http://localhost:5000/movies/69839eb43511f3cb26cb7114
+
+### Posts in a new movie in MongoDB
+POST http://localhost:5000/movies HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Hidden Figures",
+    "releaseYear" : "2017",
+    "rating" : "PG",
+    "length" : "127 m" ,
+    "originalLanguage" : "English",
+    "description" : "Hidden Figures tells the true story of three brilliant African American mathematicians—Katherine Johnson, Dorothy Vaughan, and Mary Jackson—who played a crucial role at NASA during the Space Race, overcoming racism and sexism to help launch the first U.S. astronaut into orbit.",
+    "usersMovieReview": "An excelent movie! Highly recommend it! A must watch if you want to be inspired." 
+}
+
+### Updates a specific movie from MongoDB
+PUT http://localhost:5000/movies/69839eb43511f3cb26cb7114 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Lord of the Rings: The Fellowship of the Ring",
+    "releaseYear": "2001",
+    "rating": "PG-13",
+    "length": "178 m",
+    "originalLanguage": "English",
+    "description": "The Lord of the Rings: The Fellowship of the Ring follows a young hobbit, Frodo Baggins, who inherits a powerful ring that must be destroyed to stop the dark lord Sauron. Frodo sets out on a dangerous journey with a small group of allies—the Fellowship—to take the Ring to Mount Doom, facing enemies, temptation, and growing darkness along the way.",
+    "usersMovieReview": "Highly recommend it! 10/10!"
+}
+
+### Deletes a specific movie from MongoDB
+DELETE http://localhost:5000/movies/ HTTP/1.1
+
+# ------------------------------------RENDER LINKS-----------------------------------------------
+#---------For Users------------------------------------
+### Gets all users from MongoDB
+GET https://tayde-luevano-cse341.onrender.com/
+
+### Gets a specific user from MongoDB
+GET https://tayde-luevano-cse341.onrender.com/users/69839e623511f3cb26cb710b
+
+
+### Posts in a new user in MongoDB
+POST https://tayde-luevano-cse341.onrender.com/users HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Jacky",
+	"lastName": "Jalati",
+	"email": "jackyjalati@test.com",
+    "birthday": "02/11/96",
+	"password": "purpleNerple2000"
+}
+
+### Updates a specific user's information
+PUT https://tayde-luevano-cse341.onrender.com/users/69839e623511f3cb26cb710b HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Eber",
+    "lastName": "Sanchez",
+    "birthday": "05/19/94",
+    "email": "ebersanchez94@test.test",
+    "password": "atrevidoX10$"
+}
+
+### Deletes specific user
+DELETE https://tayde-luevano-cse341.onrender.com/users/ HTTP/1.1
+#--------------------------------------------------
+
+#-------For Movies---------------------------------
+### Gets all from the movies list
+GET https://tayde-luevano-cse341.onrender.com/
+
+###
+GET https://tayde-luevano-cse341.onrender.com/movies/69839e713511f3cb26cb710d
+
+
+### Posts in a new contact in contacts database
+POST https://tayde-luevano-cse341.onrender.com/movies HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Hidden Figures",
+    "releaseYear" : "2017",
+    "rating" : "PG",
+    "length" : "127 m" ,
+    "originalLanguage" : "English",
+    "description" : "Hidden Figures tells the true story of three brilliant African American mathematicians—Katherine Johnson, Dorothy Vaughan, and Mary Jackson—who played a crucial role at NASA during the Space Race, overcoming racism and sexism to help launch the first U.S. astronaut into orbit.",
+    "usersMovieReview": "An excelent movie! Highly recommend it! A must watch if you want to be inspired." 
+}
+
+###
+PUT https://tayde-luevano-cse341.onrender.com/movies/69839ec83511f3cb26cb7116 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "RRR",
+    "releaseYear" : "2022",
+    "rating" : "TV-MA",
+    "length" : "187 m",
+    "originalLanguage" : "Telugu",
+    "description" : "RRR is an epic action drama set in 1920s colonial India that follows two legendary revolutionaries, Alluri Sitarama Raju and Komaram Bheem, whose friendship is tested as they fight British oppression, personal duty, and brutal injustice—blending over-the-top action, emotion, music, and mythic heroism.",
+    "usersMovieReview": "This is a musical?"
+}
+
+###
+DELETE https://tayde-luevano-cse341.onrender.com/movies/ HTTP/1.1
