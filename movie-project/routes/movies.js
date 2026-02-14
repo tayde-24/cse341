@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const validationM = require('../middleware/validateM');
 
 const movieController = require('../controllers/movies');
 
@@ -9,10 +10,10 @@ router.get('/', movieController.allMovies);
 router.get('/:id', movieController.singleMovie);
 
 //Creates a new movie
-router.post('/', movieController.createNewMovie);
+router.post('/', validationM.validateMovie, movieController.createNewMovie);
 
 //Updates movie
-router.put('/:id', movieController.updateMovie);
+router.put('/:id', validationM.validateMovie, movieController.updateMovie);
 
 //Delete user
 router.delete('/:id', movieController.deleteMovie);

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 // const contacts = require('express').Router();
+const validator = require('../middleware/validate.js');
 const lesson2Controller = require('../controllers/contacts.js');
 
 //To get all contacts
@@ -12,8 +13,8 @@ router.get('/:id', lesson2Controller.singleContact);
 module.exports = router; 
 
 /*------Week 3-----*/
-router.post('/', lesson2Controller.createNewContact);
+router.post('/', validator.validateContact, lesson2Controller.createNewContact);
 
-router.put('/:id', lesson2Controller.updateContact);
+router.put('/:id', validator.validateContact, lesson2Controller.updateContact);
 
 router.delete('/:id', lesson2Controller.deleteContact);

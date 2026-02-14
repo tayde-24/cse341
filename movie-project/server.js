@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 // const mongodb = require('./DB/connect');
 const mongodb = require('./DB/connect');
+//importing errors
+const createError = require('http-errors');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
@@ -26,6 +28,24 @@ app
     }))
     .use(express.json())
     .use('/', require('./routes'));
+
+app.use((req, res, next) => {
+    next(createError(404, 'Not Found'))
+});
+
+app.use((err, req, res, next) => {
+    res.status(err.status || 500);
+    res.send({
+        error: {
+            status: err.status || 500,
+            message: err.message
+        }
+    });
+});
+
+process.on('uncaughtException', (err, origin) => {
+    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
+})
 
 mongodb.initDb ((err, mongodb) => {
     if (err) {

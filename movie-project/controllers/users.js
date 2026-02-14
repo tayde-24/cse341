@@ -7,27 +7,43 @@ const ObjectId = require('mongodb').ObjectId;
 const allUsers = async(req, res, next) => {
     //This gets access to the DB
     const result = await mongodb.getDb().collection('users').find();
-    //Puts DB info as an array
-    result.toArray().then((lists)=> {
+    result.toArray((err, lists) => {
+        if (err) {
+            res.status(400).json({message:err});
+        }
+    })
+    .then((lists)=> {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
     });
 };
 
 const singleUser = async(req, res, next) => {
-    const userId = new ObjectId(req.params.id);
-    const result = await mongodb
-    .getDb()
-    .collection('users')
-    .find({_id: userId});
-    result.toArray().then((lists) => {
-        if (!lists[0]) {
-        return res.status(404).json({ error: "Contact not found" });
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({error: "Must be a valid user id to find a user information."});
     }
-        res.setHeader('Content-Type', 'application/json');
-        //Sends single contact
-        res.status(200).json(lists[0]);
-    });
+    const userId = new ObjectId(req.params.id);
+    try {
+        const result = await mongodb
+            .getDb()
+            .collection('users')
+            .find({_id: userId});
+        result.toArray((err, lists) => {
+            if (err) {
+                res.status(400).json({message:err});
+            }
+        })
+        .then((lists) => {
+            if (!lists[0]) {
+            return res.status(404).json({ error: "User not found" });
+        }
+            res.setHeader('Content-Type', 'application/json');
+            //Sends single contact
+            res.status(200).json(lists[0]);
+        });
+    } catch(error) {
+
+    }
 };
 
 const createNewUser = async(req, res, next) => {
@@ -44,11 +60,14 @@ const createNewUser = async(req, res, next) => {
         res.status(201).json(result);
         console.log('It worked!!!!');
     } else {
-        res.status(500).json(result.err || 'Some error occured while making the contact');
+        res.status(500).json(result.err || 'Some error occured while making the user.');
     }
 };
 
 const updateUser = async(req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({error: "Must be a valid user id to find a user information."});
+    }
     const userId = new ObjectId(req.params.id);
     const updateUser = {
         firstName: req.body.firstName,
@@ -62,11 +81,14 @@ const updateUser = async(req, res, next) => {
     if (result.modifiedCount > 0) {
         res.status(204).send(); 
     } else {
-        res.status(500).json(result.error || 'Some error occurred while updating the contact');
+        res.status(500).json(result.error || 'Some error occurred while updating the user information.');
     }
 };
 
 const deleteUser = async(req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({error: "Must be a valid user id to find a user."});
+    }
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().collection('users').deleteOne({_id: userId});  
         // if(err) throw err
@@ -74,12 +96,9 @@ const deleteUser = async(req, res, next) => {
         if (result.deletedCount > 0) {
             res.status(200).send();
         } else {
-            res.status(500).json(result.error || 'Some error occured while deleting the contact.');
+            res.status(500).json(result.error || 'Some error occured while deleting the user information.');
         }
 };
-
-
-
 
 
 module.exports = {

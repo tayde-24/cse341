@@ -8,26 +8,44 @@ const allMovies = async(req, res, next) => {
     //This gets access to the DB
     const result = await mongodb.getDb().collection('movies').find();
     //Puts DB info as an array
-    result.toArray().then((lists)=> {
+    result.toArray((err, lists) => {
+        if (err) {
+            res.status(400).json({message:err});
+        }
+    })
+    .then((lists)=> {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(lists);
     });
 };
 
 const singleMovie = async(req, res, next) => {
-    const movieId = new ObjectId(req.params.id);
-    const result = await mongodb
-    .getDb()
-    .collection('movies')
-    .find({_id: movieId});
-    result.toArray().then((lists) => {
-        if (!lists[0]) {
-        return res.status(404).json({ error: "Contact not found" });
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({error: "Must be a valid movie id to find a movie."});
     }
-        res.setHeader('Content-Type', 'application/json');
-        //Sends single contact
-        res.status(200).json(lists[0]);
-    });
+    const movieId = new ObjectId(req.params.id);
+    try {
+        const result = await mongodb
+            .getDb()
+            .collection('movies')
+            .find({_id: movieId});
+        result.toArray((err, lists) => {
+            if (err) {
+                res.status(400).json({message:err});
+            }
+        })
+        .then((lists) => {
+            if (!lists[0]) {
+            return res.status(404).json({ error: "Movie not found" });
+        }
+            res.setHeader('Content-Type', 'application/json');
+            //Sends single contact
+            res.status(200).json(lists[0]);
+        });
+    } catch (error) {
+        console.log(error.message);
+        next(error);
+    }
 };
 
 const createNewMovie = async(req, res, next) => {
@@ -51,6 +69,10 @@ const createNewMovie = async(req, res, next) => {
 };
 
 const updateMovie = async(req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({error: "Must be a valid movie id to find a movie."})
+    }
+
     const movieId = new ObjectId(req.params.id);
     const updateMovie = {
         title: req.body.title,
@@ -71,6 +93,10 @@ const updateMovie = async(req, res, next) => {
 };
 
 const deleteMovie = async(req, res, next) => {
+    if (!ObjectId.isValid(req.params.id)) {
+        res.status(400).json({error: "Must be a valid movie id to find a movie."})
+    }
+
     const movieId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().collection('movies').deleteOne({_id: movieId});  
         // if(err) throw err
