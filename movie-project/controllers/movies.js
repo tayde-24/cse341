@@ -5,18 +5,23 @@ const ObjectId = require('mongodb').ObjectId;
 
 //To get all the items
 const allMovies = async(req, res, next) => {
-    //This gets access to the DB
-    const result = await mongodb.getDb().collection('movies').find();
-    //Puts DB info as an array
-    result.toArray((err, lists) => {
-        if (err) {
-            res.status(400).json({message:err});
-        }
-    })
-    .then((lists)=> {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists);
-    });
+    try {
+        //This gets access to the DB
+        const result = await mongodb.getDb().collection('movies').find();
+        //Puts DB info as an array
+        result.toArray((err, lists) => {
+            if (err) {
+                res.status(400).json({message:err});
+            }
+        })
+        .then((lists)=> {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(lists);
+        });
+    } catch(err) {
+        res.status(500).json(result.err || 'Some error occured while getting the list of movies');
+    }
+    
 };
 
 const singleMovie = async(req, res, next) => {
@@ -49,23 +54,28 @@ const singleMovie = async(req, res, next) => {
 };
 
 const createNewMovie = async(req, res, next) => {
-    const newPostMovie = {
-        title: req.body.title,
-        releaseYear : req.body.releaseYear,
-        rating : req.body.rating,
-        length : req.body.length,
-        originalLanguage : req.body.originalLanguage,
-        description : req.body.description,
-        usersMovieReview: req.body.usersMovieReview
-    };
+    try {
+        const newPostMovie = {
+            title: req.body.title,
+            releaseYear : req.body.releaseYear,
+            rating : req.body.rating,
+            length : req.body.length,
+            originalLanguage : req.body.originalLanguage,
+            description : req.body.description,
+            usersMovieReview: req.body.usersMovieReview
+        };
 
-    const result = await mongodb.getDb().collection('movies').insertOne(newPostMovie);
-    if (result.acknowledged) {
-        res.status(201).json(result);
-        console.log('It worked!!!!');
-    } else {
-        res.status(500).json(result.err || 'Some error occured while making the movie');
+        const result = await mongodb.getDb().collection('movies').insertOne(newPostMovie);
+        if (result.acknowledged) {
+            res.status(201).json(result);
+            console.log('It worked!!!!');
+        } else {
+            res.status(500).json(result.err || 'Some error occured while making the movie');
+        }
+    } catch(err) {
+        res.status(500).json(err);
     }
+    
 };
 
 const updateMovie = async(req, res, next) => {
@@ -73,39 +83,47 @@ const updateMovie = async(req, res, next) => {
         res.status(400).json({error: "Must be a valid movie id to find a movie."})
     }
 
-    const movieId = new ObjectId(req.params.id);
-    const updateMovie = {
-        title: req.body.title,
-        releaseYear : req.body.releaseYear,
-        rating : req.body.rating,
-        length : req.body.length,
-        originalLanguage : req.body.originalLanguage,
-        description : req.body.description,
-        usersMovieReview: req.body.usersMovieReview
-    };
-    const result = await mongodb.getDb().collection('movies').replaceOne({_id: movieId}, updateMovie);
-    console.log(result);
-    if (result.modifiedCount > 0) {
-        res.status(204).send(); 
-    } else {
-        res.status(500).json(result.error || 'Some error occurred while updating the movie');
+    try {
+        const movieId = new ObjectId(req.params.id);
+        const updateMovie = {
+            title: req.body.title,
+            releaseYear : req.body.releaseYear,
+            rating : req.body.rating,
+            length : req.body.length,
+            originalLanguage : req.body.originalLanguage,
+            description : req.body.description,
+            usersMovieReview: req.body.usersMovieReview
+        };
+        const result = await mongodb.getDb().collection('movies').replaceOne({_id: movieId}, updateMovie);
+        console.log(result);
+        if (result.modifiedCount > 0) {
+            res.status(204).send(); 
+        } else {
+            res.status(500).json(result.error || 'Some error occurred while updating the movie');
+        }
+    } catch (err) {
+        res.status(500).json(err);
     }
 };
 
 const deleteMovie = async(req, res, next) => {
-    if (!ObjectId.isValid(req.params.id)) {
-        res.status(400).json({error: "Must be a valid movie id to find a movie."})
-    }
+    try {
+        if (!ObjectId.isValid(req.params.id)) {
+            res.status(400).json({error: "Must be a valid movie id to find a movie."})
+        }
 
-    const movieId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().collection('movies').deleteOne({_id: movieId});  
+        const movieId = new ObjectId(req.params.id);
+        const result = await mongodb.getDb().collection('movies').deleteOne({_id: movieId});  
         // if(err) throw err
-    console.log(result);
+        console.log(result);
         if (result.deletedCount > 0) {
             res.status(200).send();
         } else {
             res.status(500).json(result.error || 'Some error occured while deleting the movie.');
         }
+    } catch(err) {
+        res.status(500).json(err);
+    }
 };
 
 module.exports = {

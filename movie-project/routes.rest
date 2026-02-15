@@ -4,11 +4,8 @@
 ### Gets all users from MongoDB
 GET http://localhost:5000/users
 
-###
-GET http://localhost:5000/movies/69839ea23511f3cb26cb7112
-
 ### Gets one user from MongoDB
-GET http://localhost:5000/users/698a9d7ffa35fee41fd1d0bb
+GET http://localhost:5000/users/69839e533511f3cb26cb7109
 
 ### Posts in a new user in MongoDB database
 POST http://localhost:5000/users HTTP/1.1
@@ -34,8 +31,8 @@ content-type: application/json
     "password": "GreyRule$All"
 }
 
-### Deletes a specific user from database
-DELETE http://localhost:5000/users/698a9d7ffa35fee41fd1d0bb HTTP/1.1
+###
+DELETE http://localhost:5000/users/69911013fedf4b65e1d790a9 
 
 ### Gets all from the contacts list
 GET http://localhost:5000/abc_123
@@ -78,7 +75,7 @@ content-type: application/json
 }
 
 ### Deletes a specific movie from MongoDB
-DELETE http://localhost:5000/movies/ HTTP/1.1
+DELETE http://localhost:5000/movies/69911206fedf4b65e1d790aa HTTP/1.1
 
 ### Gets all from the contacts list
 GET http://localhost:5000/abc_123
