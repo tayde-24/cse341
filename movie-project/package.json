@@ -32,7 +32,8 @@
     "validatorjs": "^3.22.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11",
+    "cross-env": "^10.1.0",
+    "nodemon": "^3.1.14",
     "swagger-autogen": "^2.23.7"
   }
 }
