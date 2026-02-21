@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
-// const mongodb = require('./DB/connect');
+
 const mongodb = require('./DB/connect');
 //importing errors
 const createError = require('http-errors');
@@ -10,8 +10,13 @@ const createError = require('http-errors');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
+const exphbs = require('express-handlebars');
+
 const PORT = process.env.PORT || 5000;
 const app = express();
+
+app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 app
     .use(bodyParser.json())
