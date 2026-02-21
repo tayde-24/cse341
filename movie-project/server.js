@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
+const path = require('path');
 
 const mongodb = require('./DB/connect');
 //importing errors
@@ -33,6 +34,8 @@ app
     }))
     .use(express.json())
     .use('/', require('./routes'));
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use((req, res, next) => {
     next(createError(404, 'Not Found'))

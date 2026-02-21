@@ -9,7 +9,9 @@ router.use('/movies', require('./movies'));
 //@route GET /
 
 router.get('/', (req, res) => {
-    res.render('login');
+    res.render('login', {
+        layout: 'login',
+    });
 })
 
 //@desc Dashboard
@@ -17,4 +19,5 @@ router.get('/', (req, res) => {
 router.get('/dashboard', (req, res) => {
     res.render('dashboard');
 })
+
 module.exports = router;
