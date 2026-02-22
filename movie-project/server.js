@@ -3,6 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
+const passport = require('passport');
 
 const mongodb = require('./DB/connect');
 //importing errors
@@ -12,12 +13,27 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
 
 const exphbs = require('express-handlebars');
+const session = require('express-session');
+
+require('./DB/passport')(passport);
 
 const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'}));
 app.set('view engine', '.hbs');
+
+//Session Middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+}));
+
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app
     .use(bodyParser.json())
@@ -33,7 +49,8 @@ app
         credentials: true,
     }))
     .use(express.json())
-    .use('/', require('./routes'));
+    .use('/', require('./routes'))
+    .use('/auth', require('./routes/auth'));
 
 app.use(express.static(path.join(__dirname, 'public')))
 
