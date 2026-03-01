@@ -18,6 +18,7 @@ const session = require('express-session');
 require('./DB/passport')(passport);
 
 const PORT = process.env.PORT || 5000;
+
 const app = express();
 
 app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'}));
@@ -52,7 +53,7 @@ app
     .use('/', require('./routes'))
     .use('/auth', require('./routes/auth'));
 
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
     next(createError(404, 'Not Found'))
@@ -80,3 +81,5 @@ mongodb.initDb ((err, mongodb) => {
         console.log(`Connected to Database and listening on port ${PORT}`);
     }
 });
+
+mongodb.connectDB();
