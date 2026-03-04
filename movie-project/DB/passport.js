@@ -18,7 +18,7 @@ module.exports = function(passport) {
             image: profile.photos[0].value
         }
         try {
-            let user = await User.find({googleId: profile.id})
+            let user = await User.findOne({googleId: profile.id})
             if (user) {
                 done(null,user);
             } else {
@@ -35,9 +35,15 @@ module.exports = function(passport) {
         done(null, user.id);
     })
 
-    passport.deserializeUser((id,done) => {
+    passport.deserializeUser(async (id,done) => {
         //See what I need to put down here
         /**/ 
-        User.findById(id, (err, user) => done(err, user));
+        try {
+            const user = await User.findById(id);
+            done(null, user);
+        } catch(err) {
+            console.log(err);
+        }
+        
     })
 }
